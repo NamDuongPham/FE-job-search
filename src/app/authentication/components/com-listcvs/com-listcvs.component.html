@@ -1,0 +1,48 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>CV đã lưu</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>CV đã lưu</h4>
+              <div class="card-header-form">
+                  <form>
+                  </form>
+                </div>
+            </div>
+            <div class="card-body p-0">
+ 
+              <div class="table-responsive">
+                <table class="table table-striped table-md">
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên CV</th>
+                    <th>Ngành nghề</th>
+                    <th>Địa chỉ</th>
+                    <th>Hành động</th>
+                  </tr>
+                  <tr *ngFor="let item of data">
+                    <td>{{item.idCv}}</td>
+                    <td>{{item.nameFile}}</td>
+                    <td>{{item.careerName}}</td>
+                    <td>{{item.locationName}}</td>
+                    <td><a href="{{baseUrl}}{{item.nameFile}}" class="btn btn-primary ml-2">Xem chi tiết</a>
+                      <button class="btn btn-danger ml-2" (click)="delete(item.idCv)">Xóa</button>
+                    </td>
+                  </tr> 
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</app-auth-contect>

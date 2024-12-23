@@ -1,0 +1,35 @@
+<section class="section">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">        
+
+        <div class="card card-primary">
+          <div class="card-header"><h4>Thông tin công ty</h4></div>
+
+          <div class="card-body">
+            <form >
+              <div class="form-group">
+                <label for="NameComapany">Tên công ty</label>
+                <input id="nameCom" type="text" [(ngModel)]="nameCom" class="form-control" name="nameCom">
+                <div class="invalid-feedback">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="address">Địa chỉ</label>
+                <input id="address"  type="text" [(ngModel)]="address" class="form-control" name="address">
+              </div>
+          
+
+              <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" (click)="onSubmit()">
+                  Hoàn thành
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>
+</section>

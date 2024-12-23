@@ -1,0 +1,119 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>News</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>List News</h4>
+              <div class="card-header-form">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-md">
+                  <tr>
+                    <th>ID</th>
+                    <th>Name Title</th>
+                    <th>Local Name</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                  </tr>
+                  <tr *ngFor="let item of data">
+                    
+                    <td>{{item.idNew}}</td>
+                    <td>{{item.titleNew}}</td>
+                    <td>{{item.localName}}</td>
+                    <td>{{item.describeNew}}</td>
+                    <td *ngIf="item.statusNew !== 'wait' ">
+                      <div class="badge badge-success" >{{item.statusNew}}</div>
+                    </td>
+                    <td *ngIf="item.statusNew === 'wait' ">
+                      <div class="badge badge-danger">{{item.statusNew}}</div>
+                    </td>
+                    <td>{{item.timeNews | date:'dd/MM/yyyy'}}</td>
+                    <td><button class="btn btn-primary" (click)="setValues(item.idNew,item.titleNew,item.describeNew,item.localName,item.skill,item.wage,item.level)" data-toggle="modal" data-target="#exampleModalCenter">Update</button>
+                      <button class="btn btn-danger ml-2" (click)=" delete(item.idNew)">Delete</button>
+                    </td>
+                  </tr>
+                  
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update news</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title news</label>
+          <div class="col-sm-12 col-md-7">
+           
+              <input type="text" class="form-control" name="title" [(ngModel)]="title">
+          
+          </div>
+        </div>
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Local Name</label>
+          <div class="col-sm-12 col-md-7">
+            <input type="text" class="form-control" name="local" [(ngModel)]="local">
+          </div>
+        </div>
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Wage</label>
+          <div class="col-sm-12 col-md-7">
+            <input type="number" class="form-control" name="des" [(ngModel)]="wage">
+          </div>
+        </div>
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Skill</label>
+          <div class="col-sm-12 col-md-7">
+            <input type="text" class="form-control" name="des" [(ngModel)]="skill">
+          </div>
+        </div>
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Level</label>
+          <div class="col-sm-12 col-md-7">
+            <input type="text" class="form-control" name="level" [(ngModel)]="level">
+          </div>
+        </div>
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Describe</label>
+          <div class="col-sm-12 col-md-7">
+            <input type="text" class="form-control" name="des" [(ngModel)]="des">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="update()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</app-auth-contect>

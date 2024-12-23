@@ -1,0 +1,45 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>Create Company</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>Add Company</h4>
+            </div>
+            <div class="card-body">
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">UserName</label>
+                <div class="col-sm-12 col-md-7">
+                  <select class="form-control selectric" [(ngModel)]="username">
+                    <option *ngFor="let item of data" value="{{item.userId}}">{{item.userName}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Role name</label>
+                <div class="col-sm-12 col-md-7">
+                  <select class="form-control selectric" [(ngModel)]="role">
+                    <option value="1">ROLE_USER</option>
+                    <option value="3">ROLE_STAFF</option>
+                    <option value="2">ROLE_ADMIN</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                <div class="col-sm-12 col-md-7">
+                  <button class="btn btn-primary" (click)="save()">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</app-auth-contect>

@@ -1,0 +1,72 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>Địa chỉ làm việc</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>Quản lý địa chỉ làm việc</h4>
+              <div class="card-header-form">
+                  <form>
+                    <div class="input-group">
+                      <button class="btn btn-primary ml-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Thêm</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-md">
+                  <tr>
+                    <th>ID</th>
+                    <th>Địa chỉ</th>
+                    <th>Hành động</th>
+                  </tr>
+                  <tr *ngFor="let item of data">
+                    <td>{{item.idLocation}}</td>
+                    <td>{{item.nameLocation}}</td>
+                    <td><button class="btn btn-primary" (click)="updateLocation(item.idLocation,item.nameLocation)" data-toggle="modal" data-target="#exampleModal">Cập nhật</button>
+                      <button class="btn btn-danger ml-2" (click)="deleteLocation(item.idLocation)">Xóa</button>
+                    </td>
+                  </tr>
+                  
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thêm địa chỉ</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+            <div class="form-group row mb-4">
+              <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tên địa chỉ</label>
+              <div class="col-sm-12 col-md-7">
+                <input type="text" class="form-control" [(ngModel)]="locationName">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            <button type="button" *ngIf="idLocation == 0" class="btn btn-primary" data-dismiss="modal" (click)="addLocation()">Lưu</button>
+            <button type="button" *ngIf="idLocation != 0" class="btn btn-primary" data-dismiss="modal" (click)="update()">Cập nhật</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</app-auth-contect>

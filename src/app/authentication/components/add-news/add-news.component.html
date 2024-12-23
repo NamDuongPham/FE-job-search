@@ -1,0 +1,82 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>Tạo tin tức tuyển dụng</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>Thêm tin tức</h4>
+            </div>
+            <div class="card-body">
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tiêu đề</label>
+                <div class="col-sm-12 col-md-7">
+                 
+                    <input type="text" class="form-control" name="title" [(ngModel)]="title">
+                
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Địa chỉ công ty</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="local" [(ngModel)]="local">
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Lương</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="number" class="form-control" name="des" [(ngModel)]="wage">
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kỹ năng</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="des" [(ngModel)]="skill">
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cấp độ</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="level" [(ngModel)]="level">
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mô tả</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="des" [(ngModel)]="des">
+                </div>
+              </div>
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tên ngành nghề</label>
+                <div class="col-sm-12 col-md-7">
+                  <select class="form-control selectric" [(ngModel)]="idCareer" >
+                    <option *ngFor="let item of dataCareer" value="{{item.careerId}}">{{item.nameCareer}}</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Địa chỉ làm việc</label>
+                <div class="col-sm-12 col-md-7">
+                  <select class="form-control selectric" [(ngModel)]="idLocation">
+                    <option *ngFor="let item of dataLocation" value="{{item.idLocation}}">{{item.nameLocation}}</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                <div class="col-sm-12 col-md-7">
+                  <button class="btn btn-primary" (click)="save()" >Lưu</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</app-auth-contect>

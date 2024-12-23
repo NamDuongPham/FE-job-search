@@ -1,0 +1,57 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>Tin tức</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>Quản lý tin tức</h4>
+              <div class="card-header-form">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search" >
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-md">
+                  <tr>
+                    <th>ID</th>
+                    <th>Tiêu đề</th>
+                    <th>Địa chỉ</th>
+                    <th>Ngày tạo</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                  </tr>
+                  <tr *ngFor="let item of data">
+                    <td>{{item.idNew}}</td>
+                    <td>{{item.titleNew}}</td>
+                    <td>{{item.localName}}</td>
+                    <td>{{item.timeNews | date:'dd/MM/yyyy'}}</td>
+                    <td *ngIf="item.statusNew !== 'wait' ">
+                      <div class="badge badge-success" >{{item.statusNew}}</div>
+                    </td>
+                    <td *ngIf="item.statusNew === 'wait' ">
+                      <div class="badge badge-success">{{item.statusNew}}</div>
+                    </td>
+                    <td *ngIf="item.statusNew === 'wait' "><button class="btn btn-primary"  (click)="accept(item.idNew)">Chấp nhận</button></td>
+                    <td *ngIf="item.statusNew != 'wait' "><button class="btn btn-secondary" >Chấp nhận</button></td>
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</app-auth-contect>

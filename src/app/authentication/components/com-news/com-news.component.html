@@ -1,0 +1,54 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>CV ứng tuyển</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>Dánh sách CV đã ứng tuyển</h4>
+              <div class="card-header-form">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="card-body p-0 text-center">
+              <div class="table-responsive">
+                <table class="table table-striped table-md">
+                  <tr>
+                    <th>ID</th>
+                    <th>Tiêu đề</th>
+                    <th>Trạng thái</th>
+                    <th>Số CV</th>
+                    <th>Hành động</th>
+                    <th>Danh sách CV</th>
+                  </tr>
+                  <tr *ngFor="let item of data">
+                    <td>{{item.idNew}}</td>
+                    <td>{{item.titleNew}}</td>
+                    <td class="badge badge-success">{{item.statusNew}}</td>
+                    <td>{{item.countCv}}</td>
+                    <td><button *ngIf="item.statusNew === 'success'" class="btn btn-success" (click)="accept(item.idNew)">Hoàn thành</button>
+                      <button *ngIf="item.statusNew !== 'success'" class="btn btn-secondary">Hoàn thành</button>
+                    </td>
+                    <td><a [routerLink]="['/',AppURL.Authen,AuthURL.LisCv,item.idNew]" routerLinkActive="router-link-active"  class="btn btn-primary">Danh sách</a></td>
+                  </tr>
+                  
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</app-auth-contect>

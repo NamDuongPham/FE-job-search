@@ -1,0 +1,96 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>Profile</h1>
+    </div>
+    <div class="section-body">
+    </div>
+    <div class="row mt-sm-4">
+      <div class="col-12 col-md-12 col-lg-12">
+        <div class="card author-box card-primary">
+          <form  class="needs-validation" >
+            <div class="card-header">
+              <h4>Edit Profile</h4>
+              <div class="card-header-action">
+
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6 col-md-6 col-lg-6">
+                  <div class="row">
+                    <div class="form-group col-md-12 col-12">
+                      <label>ID company</label>
+                      <input type="number" class="form-control" name="idCom" [(ngModel)]="idCom" disabled >
+                      <div class="invalid-feedback">
+                        Please fill in ID
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-12 col-12">
+                      <label>Name company</label>
+                      <input type="text" class="form-control" name="nameCompany" [(ngModel)]="nameCompany" >
+                      <div class="invalid-feedback">
+                        Please fill in the name company
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-12 col-12">
+                      <label>Account</label>
+                      <input type="text" class="form-control" name="userName" disabled [(ngModel)]="userName" >
+                      <div class="invalid-feedback">
+                        Please fill in the account
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+                <div class="col-6 col-md-6 col-lg-6">
+                  <div class="row">
+                    <div class="form-group col-md-12 col-12">
+                      <label>Total money</label>
+                      <input type="number" class="form-control" name="moneyInAccount" [(ngModel)]="moneyInAccount" disabled>
+                      <div class="invalid-feedback">
+                        Please fill in the money
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-12 col-12">
+                      <label>Address</label>
+                      <input type="text" class="form-control" name="addressCompany" [(ngModel)]="addressCompany"   >
+                      <div class="invalid-feedback">
+                        Please fill in the address
+                      </div>
+                    </div>
+                    <div class="form-group col-md-12 cok-12">
+                      <div class="form-group">
+                        <img *ngIf="image == null" class="img-fluid img-thumbnail" src="assets/img/avatar/avatar-1.png" alt="">
+                        <img *ngIf="image != null" class="img-fluid img-thumbnail" src="http://localhost:8080/api/v1/downloadFile/{{image}}" alt="">
+                      </div>
+                      <div class="form-group">
+                        <input type="file" (change) = "onConvertImage($event)">
+                        
+                      </div>
+                      <button type="button" claas="btn btn-success" (click)="updateAvatar()">Upload Image</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="form-group">
+                <button  class="btn btn-primary" (click)="updateCom()">Save Changes</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</app-auth-contect>

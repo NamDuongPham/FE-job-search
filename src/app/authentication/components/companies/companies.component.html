@@ -1,0 +1,96 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>Companies</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>Manage Companies</h4>
+              <div class="card-header-form">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-md">
+                  <tr>
+                    <th>STT</th>
+                    <th>Name Companies</th>
+                    <th>Account</th>
+                    <th>Money</th>
+                    <th>Action</th>
+                  </tr>
+                  <tr *ngFor="let item of data">
+                    <td>{{item.idCompany}}</td>
+                    <td>{{item.nameCompany}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>
+                      <div class="badge badge-success">{{item.moneyInAccount}} VNĐ</div>
+                    </td>
+                    <td><button class="btn btn-primary"  data-toggle="modal" data-target="#detail"  (click)="detail(item)">Detail</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Deatail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+              <table class="table table-md">
+                <tr>
+                  <td>ID</td>
+                  <td>{{idCompany}}</td>
+                </tr>
+                <tr>
+                  <td>Company</td>
+                  <td>{{nameCompany}}</td>
+                </tr>
+                <tr>
+                  <td>Money</td>
+                  <td>{{money}}</td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>{{addressCompany}}</td>
+                </tr>
+                <tr>
+                  <td>Username</td>
+                  <td>{{userName}}</td>
+                </tr>
+               
+               
+
+              </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-auth-contect>
