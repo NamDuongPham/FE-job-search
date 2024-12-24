@@ -1,0 +1,50 @@
+<app-header></app-header>
+<section class="mt-5" >
+  <div class="container">
+    
+    <div class="shadow-sm p-3 mb-5 bg-white rounded" >
+      <div class="row">
+        <div class="col-7 pl-3">
+          <h2>Thông tin chi tiết</h2>
+          <span><h2>Tên công ty: </h2><h2>{{nameCom}}</h2></span><br/>
+          <span><h2>Địa chỉ: </h2><h2>{{address}}</h2></span><br/>
+          
+   
+        </div>
+        <div class="col-5 border-left text-center">
+          <img *ngIf="imageCompany == null" class="img-fluid img-thumbnail" width="200px"  src="assets/img/avatar/avatar-1.png" alt="">
+          <img *ngIf="imageCompany != null" class="img-fluid img-thumbnail"  width="200px"  src="http://localhost:8080/api/v1/downloadFile/{{imageCompany}}" alt="">
+        
+        </div>
+      </div>
+
+    </div>
+
+    
+  </div>
+</section>
+
+<section class="mt-2">
+  <div class="container">
+    <h4 style="color: brown;" class="mt-2 mb-4">Danh sách các tin tức tuyển dụng của công ty {{nameCom}}</h4>
+    <div class="row">
+      <div class="col-3" *ngFor="let item of dataNews">
+        <div class="card" *ngIf="item.statusNew !== 'wait'">
+          <div class="card-body">
+            <h5 class="card-title">{{item.titleNew}}</h5>
+            <span>Thời gian: {{item.timeNews | date:'dd/MM/yyyy'}}</span>
+            <p class="card-text">Vị trí: {{item.localName}}<br/>
+              Lương : {{item.wage}} $<br/>
+              Kỹ năng: {{item.skill}}
+            </p>
+            
+            <!-- <a [routerLink]="['/new-detail',item.idNew]" routerLinkActive="router-link-active"  class="btn btn-primary">Xem chi tiết</a> -->
+            <button class="btn btn-primary" (click)="openCityInNewWindow(item.idNew)">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+

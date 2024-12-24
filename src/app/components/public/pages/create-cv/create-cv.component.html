@@ -1,0 +1,224 @@
+<app-header></app-header>
+<section class="mt-5" >
+  <div class="container">
+    <div class="shadow-sm p-3 mb-5 bg-white rounded" >
+      <h3 class="text-center mt-3 mb-3">Tạo CV</h3>
+      <form #resumeForm="ngForm">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="shadow-sm card">
+              <div class="card-body">
+                <h4 class="card-title d-flex align-items-center">
+                  <i class="material-icons">
+                    account_circle
+                  </i>
+                  Thông tin cá nhân</h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="resume.name" name="name" placeholder="Họ và tên"
+                        #Name="ngModel" required
+                        [ngClass]="{'is-invalid': Name.invalid && (Name.touched || resumeForm.submitted) }">
+                    </div>
+                    <div class="form-group">
+                      <div class="form-group">
+                        <textarea class="form-control" [(ngModel)]="resume.address" name="Địa chỉ" rows="3"
+                          placeholder="Address" #Address="ngModel" required
+                          [ngClass]="{'is-invalid': Address.invalid && (Address.touched || resumeForm.submitted) }"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo"
+                        placeholder="Số điện thoại" #ContactNo="ngModel" required
+                        [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || resumeForm.submitted) }">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="resume.email" name="emailId"
+                        placeholder="Địa chỉ email" #Email="ngModel" required
+                        [ngClass]="{'is-invalid': Email.invalid && (Email.touched || resumeForm.submitted) }">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" [(ngModel)]="resume.socialProfile" name="socialProfile"
+                        placeholder="Github">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Skills -->
+            <div class="shadow-sm card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between card-title">
+                  <h4 class="d-flex align-items-center">
+                    <i class="material-icons">
+                      timeline
+                    </i>
+                    Kỹ năng</h4>
+                  <button class="btn btn-primary" (click)="addSkill()">+</button>
+                </div>
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let s of resume.skills; let i=index">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="s.value"
+                        placeholder="Ví dụ: Java,..." #Skill="ngModel" required
+                        [ngClass]="{'is-invalid': Skill.invalid && (Skill.touched || resumeForm.submitted) }">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+    
+            <!-- Experience -->
+            <div class="shadow-sm card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between card-title">
+                  <h4 class="d-flex align-items-center">
+                    <i class="material-icons">
+                      timeline
+                    </i>
+                    Kinh nghiệm</h4>
+                  <button class="btn btn-primary" (click)="addExperience()">+</button>
+                </div>
+                <div class="row" *ngFor="let ex of resume.experiences; let i=index">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="employer{{i}}" [(ngModel)]="ex.employer"
+                        placeholder="Ví dụ: Nhân viên,..." #Employer="ngModel" required
+                        [ngClass]="{'is-invalid': Employer.invalid && (Employer.touched || resumeForm.submitted) }">
+                    </div>
+                    <div class="form-group">
+                      <div class="form-group">
+                        <textarea class="form-control" name="jobDescription{{i}}" [(ngModel)]="ex.jobDescription" rows="3"
+                          placeholder="Mô tả công việc"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="jobTitle{{i}}" [(ngModel)]="ex.jobTitle"
+                        placeholder="Tiêu đề công việc" #JobTitle="ngModel" required
+                        [ngClass]="{'is-invalid': JobTitle.invalid && (JobTitle.touched || resumeForm.submitted) }">
+                    </div>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="exInMonths{{i}}" [(ngModel)]="ex.experience"
+                        placeholder="Số tháng" #Experience="ngModel" required
+                        [ngClass]="{'is-invalid': Experience.invalid && (Experience.touched || resumeForm.submitted) }">
+                    </div>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+    
+            <!-- Education -->
+            <div class="shadow-sm card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between card-title">
+                  <h4 class="d-flex align-items-center">
+                    <i class="material-icons">
+                      school
+                    </i>
+                    Học vấn</h4>
+                  <button class="btn btn-primary" (click)="addEducation()">+</button>
+                </div>
+                <div class="row" *ngFor="let ed of resume.educations; let i=index">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <select class="form-control" placeholder="Bằng cấp" name="degree{{i}}" [(ngModel)]="ed.degree"
+                        #Degree="ngModel" required
+                        [ngClass]="{'is-invalid': Degree.invalid && (Degree.touched || resumeForm.submitted) }">
+                        <option [value]="d" *ngFor="let d of degrees">{{d}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="college{{i}}" [(ngModel)]="ed.college"
+                        placeholder="Cao đẳng/Đại học" #College="ngModel" required
+                        [ngClass]="{'is-invalid': College.invalid && (College.touched || resumeForm.submitted) }">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="passingYear{{i}}" [(ngModel)]="ed.passingYear"
+                        placeholder="Năm hoàn thành" #PassingYear="ngModel" required
+                        [ngClass]="{'is-invalid': PassingYear.invalid && (PassingYear.touched || resumeForm.submitted) }">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="result{{i}}" [(ngModel)]="ed.percentage"
+                        placeholder="Kết quả" #Percentage="ngModel" required
+                        [ngClass]="{'is-invalid': Percentage.invalid && (Percentage.touched || resumeForm.submitted) }">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Other Details -->
+    
+            <div class="shadow-sm card">
+              <div class="card-body">
+                <h4 class="card-title d-flex align-items-center">
+                  <i class="material-icons"> Danh sách </i>Thông tin khác</h4>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea type="text" class="form-control" [(ngModel)]="resume.otherDetails" name="otherDetails"
+                        rows="4"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="shadow-sm card action-buttons">
+              <button (click)="resumeForm.valid ? generatePdf('open') : ''"
+                class="mb-3 btn btn-success d-flex align-items-center justify-content-center">
+                <i class="material-icons"> 
+                  picture_as_pdf
+                </i> <span>Mở PDF</span></button>
+              <button (click)="resumeForm.valid ? generatePdf('download') : ''"
+                class="mb-3 btn btn-success d-flex align-items-center justify-content-center">
+                <i class="material-icons"> 
+                  cloud_download
+                </i><span>Tải PDF</span></button>
+              <button (click)="resumeForm.valid ? generatePdf('save') : ''"
+                class="btn btn-success mb-3 d-flex align-items-center justify-content-center">
+                <i class="material-icons"> 
+                  save
+                </i><span>Lưu CV</span></button>
+                <button (click)="resumeForm.valid ? generatePdf('print') : ''"
+                class="btn btn-success mb-3 d-flex align-items-center justify-content-center">
+                <i class="material-icons"> 
+                  print
+                </i><span>In PDF</span></button>
+    
+              <button type='reset' (click)="resetForm()"
+                class="btn btn-danger d-flex align-items-center justify-content-center">
+                <i class="material-icons">
+                  clear
+                </i><span>Bỏ trống thông tin</span></button>
+            </div>
+    
+            <div class="card p-4">
+              <div class="form-group">
+                <label class="h4 mb-3" for="">Hình ảnh của CV</label>
+                <input type="file" class="form-control-file" (change)="fileChanged($event)" aria-describedby="fileHelpId">
+              </div>
+              <img *ngIf="resume.profilePic" [src]="resume.profilePic" class="img-thumbnail">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

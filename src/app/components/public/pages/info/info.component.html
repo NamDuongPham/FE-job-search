@@ -1,0 +1,115 @@
+<app-header></app-header>
+<div class="container">
+    <section class="section mt-5">
+        <div class="section-header">
+          <h1>Thông tin cá nhân</h1>
+        </div>
+        <div class="section-body">
+        </div>
+        <div class="row mt-sm-4">
+          <div class="col-12 col-md-12 col-lg-12">
+            <div class="card author-box card-primary">
+              <form  class="needs-validation" >
+                <div class="card-header">
+                  <h4>Chỉnh sửa thông tin</h4>
+                  <div class="card-header-action">
+                    <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-icon icon-right">Đổi mật khẩu</button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-5 col-md-5 col-lg-5">
+                      <div class="form-group">
+                        <img  class="img-fluid img-thumbnail" src="assets/img/avatar/avatar-1.png" alt="">
+                        <!-- <img *ngIf="image" class="img-fluid img-thumbnail" src=[(imag)] alt=""> -->
+                      </div>
+                      <div class="form-group">
+                        <input type="file" (change) = "onConvertImage(inputFile)" name="" id="" #inputFile>
+                      </div>
+                    </div>
+                    <div class="col-7 col-md-7 col-lg-7">
+                      <div class="row">
+                        <div class="form-group col-md-12 col-12">
+                          <label>Tài khoản</label>
+                          <input type="number" class="form-control" name="money" disabled [(ngModel)]="money">
+                          <div class="invalid-feedback">
+                            Please fill in the money
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-12 col-12">
+                          <label>Họ và tên</label>
+                          <input type="text" class="form-control" name="fullname"  [(ngModel)]="fullname" >
+                          <div class="invalid-feedback">
+                            Vui lòng điền họ và tên
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-12 col-12">
+                          <label>Địa chỉ</label>
+                          <input type="text" class="form-control" name="address"  [(ngModel)]="address" >
+                          <div class="invalid-feedback">
+                           Vui lòng điền địa chỉ
+                          </div>
+                        </div>
+                      </div>
+    
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="form-group">
+                    <button (click)="onSave()"  class="btn btn-primary">Lưu thay đổi</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Đổi mật khẩu</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="form-group col-md-12 col-12">
+                  <label>Mật khẩu</label>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="newPassword"  >
+                  <div class="invalid-feedback">
+                   Vui lòng điền mật khẩu
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="form-group col-md-12 col-12">
+                  <label>Xác nhận mật khẩu</label>
+                  <input type="password" class="form-control" name="comfirm_password" [(ngModel)]="newPasswordT"  >
+                  <div class="invalid-feedback">
+                    Vui lòng điền xác nhận mật khẩu
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onChangePass()">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<app-footer></app-footer>

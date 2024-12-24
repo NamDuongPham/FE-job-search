@@ -1,0 +1,55 @@
+<section class="mt-5">
+  <div class="container card">
+    <div class="card-body">
+        <div class="row">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" [(ngModel)]="keyWord" >
+            <div class="input-group-append">
+              <button class="btn btn-primary" (click)="search()">Tìm kiếm</button>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-primary" (click)="search()">Lọc</button>
+            </div>
+            <select  class="form-control selectric" [(ngModel)]="locationId">
+              <option value="0">---Tất cả địa điểm tuyển dụng---</option>
+              <option *ngFor="let item of dataLocation" value="{{item.idLocation}}">{{item.nameLocation}}</option>
+            </select>
+            <select  class="form-control selectric" [(ngModel)]="careerId">
+              <option value="0">---Tất cả ngành nghề tuyển dụng---</option>
+              <option *ngFor="let item of dataCareer" value="{{item.careerId}}">{{item.nameCareer}}</option>
+            </select>
+            <select  class="form-control selectric" [(ngModel)]="sort">
+              <option value="0">--Sắp xếp mặc định--</option>
+              <option value="1">--Sắp xếp tin mới nhất--</option>
+            </select>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="mt-2">
+  
+  <div class="container">
+    <h4 style="color: brown;" class="mt-2 mb-4">Danh sách tin tức tuyển dụng</h4>
+    <div class="row">
+      <div class="col-3" *ngFor="let item of dataNews">
+        <div class="card" *ngIf="item.statusNew !== 'wait'">
+          <div class="card-body">
+            <h5 class="card-title">{{item.titleNew}}</h5>
+            <span>Thời gian: {{item.timeNews | date:'dd/MM/yyyy'}}</span>
+            <p class="card-text">Vị trí: {{item.localName}}<br/>
+              Lương : {{item.wage}} $<br/>
+              Kỹ năng: {{item.skill}}
+            </p>
+            
+            <a [routerLink]="['/new-detail',item.idNew]" routerLinkActive="router-link-active"  class="btn btn-primary">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

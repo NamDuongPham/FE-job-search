@@ -1,0 +1,75 @@
+<app-header></app-header>
+<section class="mt-5" >
+  <div class="container">
+    <div class="shadow-sm p-3 mb-5 bg-white rounded" >
+      <h4 class="text-center">Danh sách CV của tôi</h4>
+      <div class="card-body p-0 mt-3 text-center">
+        <div class="table-responsive">
+          <table class="table table-striped table-md">
+            <tr>
+              <th>ID</th>
+              <th>Tên CV</th>
+              <th>Ngày tạo</th>
+              <th>Bảo mật</th>
+              <th>Hành động</th>
+            </tr>
+            <tr *ngFor="let item of data">
+              <td>{{item.idCv}}</td>
+              <td>{{item.nameFile}}</td>
+              <td>{{item.createTime | date:'dd/MM/yyyy'}}</td>
+              <td><button *ngIf="item.security == 'private'" class="btn btn-primary" (click)="changeSecurity(item.idCv,'public')">{{item.security}}</button>
+                <button *ngIf="item.security == 'public'" class="btn btn-success" (click)="changeSecurity(item.idCv,'private')">{{item.security}}</button>
+              </td>
+               <td><a href="{{baseUrl}}{{item.nameFile}}" class="btn btn-primary ml-2">Xem chi tiết</a>
+                <button class="btn btn-danger ml-3" (click)="delete(item.idCv)">Xóa</button>
+              </td>
+            
+            </tr> 
+          </table>
+        </div>
+      </div>
+      <div class="px-5 mt-4 mb-3" ><button  class="ml-1 btn btn-primary"  data-toggle="modal" data-target="#exampleModalCenter">Create cv</button><a href="/status-cv" class="ml-1 btn btn-primary">Status cv</a></div>
+    </div>
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Tạo CV</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Ngành nghề</label>
+          <div class="col-sm-12 col-md-7">
+            <select class="form-control selectric"  [(ngModel)]="careerId">
+              <option value="0">Lựa chọn ngành nghề</option>
+              <option *ngFor="let item of dataCareer" value="{{item.careerId}}">{{item.nameCareer}}</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group row mb-4">
+          <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Địa điểm</label>
+          <div class="col-sm-12 col-md-7">
+            <select class="form-control selectric" [(ngModel)]="locationId">
+              <option value="0">Lựa chọn làm việc</option>
+              <option *ngFor="let item of dataLocation" value="{{item.idLocation}}">{{item.nameLocation}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="forward()">Tạo CV</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<app-newsCon></app-newsCon>
+<app-footer></app-footer>
+

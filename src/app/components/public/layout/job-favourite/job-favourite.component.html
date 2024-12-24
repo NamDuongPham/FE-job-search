@@ -1,0 +1,20 @@
+<section class="mt-5 ">
+  <div class="container">
+    <div class="row">
+      <div class="col-3" *ngFor="let item of data">
+        <div class="card" *ngIf="item.statusNew !== 'wait'">
+          <div class="card-body">
+            <h5 class="card-title">{{item.titleNew}}</h5>
+            <span>Thời gian: {{item.timeNews | date:'dd/MM/yyyy'}}</span>
+            <p class="card-text">Vị trí: {{item.localName}}<br/>
+              Lương : {{item.wage}} $<br/>
+              Kỹ năng: {{item.skill}}
+            </p>
+            
+            <a [routerLink]="['/new-detail',item.idNew]" routerLinkActive="router-link-active"  class="btn btn-primary">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

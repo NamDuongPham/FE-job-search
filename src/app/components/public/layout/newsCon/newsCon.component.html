@@ -1,0 +1,22 @@
+<section class="mt-5">
+  <div class="container">
+    <h4 style="color: brown;" class="mt-2 mb-4">Danh sách tin tức tuyển dụng</h4>
+    <div class="row">
+      <div class="col-3" *ngFor="let item of dataNews">
+        <div class="card" *ngIf="item.statusNew !== 'wait'">
+          <div class="card-body">
+            <h5 class="card-title">{{item.titleNew}}</h5>
+            <span>Thời gian: {{item.timeNews | date:'dd/MM/yyyy'}}</span>
+            <p class="card-text">Vị trí: {{item.localName}}<br/>
+              Lương : {{item.wage}} $<br/>
+              Kỹ năng: {{item.skill}}
+            </p>
+            
+
+            <button class="btn btn-primary" (click)="openNewWindow(item.idNew)">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
